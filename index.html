@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Sathi Online Attendance</title>
+  <title>Digital Sathi School Management Application</title>
   <style>
     html, body {
       margin: 0;
@@ -12,26 +12,6 @@
       overflow: hidden;
       font-family: Arial, sans-serif;
       background-color: #f0f0f0;
-    }
-
-    #fullscreenBtn {
-      position: absolute;
-      z-index: 9999;
-      top: 1rem;
-      left: 1rem;
-      padding: 0.75rem 1.2rem;
-      font-size: 1rem;
-      background-color: #007BFF;
-      color: #fff;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background 0.3s ease;
-    }
-
-    #fullscreenBtn:hover {
-      background-color: #0056b3;
     }
 
     iframe {
@@ -43,18 +23,9 @@
       border: none;
     }
 
-    @media (max-width: 600px) {
-      #fullscreenBtn {
-        font-size: 0.9rem;
-        padding: 0.6rem 1rem;
-        top: 0.5rem;
-        left: 0.5rem;
-      }
-    }
   </style>
 </head>
 <body>
-  <button id="fullscreenBtn">Enter Fullscreen</button>
 
   <iframe
     id="attendanceFrame"
@@ -62,24 +33,6 @@
     allowfullscreen="true">
   </iframe>
 
-  <script>
-    document.getElementById('fullscreenBtn').addEventListener('click', function () {
-      const iframe = document.getElementById('attendanceFrame');
-      if (iframe.requestFullscreen) {
-        iframe.requestFullscreen();
-      } else if (iframe.webkitRequestFullscreen) {
-        iframe.webkitRequestFullscreen();
-      } else if (iframe.msRequestFullscreen) {
-        iframe.msRequestFullscreen();
-      }
-      this.style.display = 'none';
-    });
-
-    document.addEventListener('fullscreenchange', function () {
-      if (!document.fullscreenElement) {
-        document.getElementById('fullscreenBtn').style.display = 'block';
-      }
-    });
-  </script>
+   </script>
 </body>
 </html>

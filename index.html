@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Sathi Online Attendance</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    #fullscreenBtn {
+      position: absolute;
+      z-index: 9999;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.75rem 1.2rem;
+      font-size: 1rem;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s ease;
+    }
+
+    #fullscreenBtn:hover {
+      background-color: #0056b3;
+    }
+
+    iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 600px) {
+      #fullscreenBtn {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+        top: 0.5rem;
+        left: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="fullscreenBtn">Enter Fullscreen</button>
+
+  <iframe
+    id="attendanceFrame"
+    src="https://script.google.com/macros/s/AKfycbyboNXPb-5VR8skuiOJaGgiE_IrW_VH2MPKcaiKRC3npXSSr5SfTvhL-RaR4-x7StLt/exec"
+    allowfullscreen="true">
+  </iframe>
+
+  <script>
+    document.getElementById('fullscreenBtn').addEventListener('click', function () {
+      const iframe = document.getElementById('attendanceFrame');
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      }
+      this.style.display = 'none';
+    });
+
+    document.addEventListener('fullscreenchange', function () {
+      if (!document.fullscreenElement) {
+        document.getElementById('fullscreenBtn').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
